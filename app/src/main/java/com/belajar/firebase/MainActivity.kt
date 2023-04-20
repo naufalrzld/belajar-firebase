@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
             adapter = userAdapter
         }
 
+        binding.swRefresh.setOnRefreshListener { getUsers() }
+
         binding.btnAdd.setOnClickListener {
             startActivity(Intent(this, DetailUserActivity::class.java))
         }
@@ -80,6 +82,9 @@ class MainActivity : AppCompatActivity() {
          *  Hint: Untuk delete data gunakan .document(id).delete().
          *  Untuk menghapus item dari RecyclerView, gunakan fungsi adapter.deleteUser(id)
          **/
+        // Tulis kode disini
+
+
     }
 
     override fun onResume() {
