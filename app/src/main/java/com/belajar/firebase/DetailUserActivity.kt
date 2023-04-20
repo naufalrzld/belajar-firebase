@@ -1,9 +1,13 @@
 package com.belajar.firebase
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.belajar.firebase.databinding.ActivityDetailUserBinding
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -17,7 +21,7 @@ class DetailUserActivity : AppCompatActivity() {
      * Hint: Silakan periksa Assistant Firebase Cloud Firestore Point 3
      **/
     // Tulis kode disini
-
+    private val firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +58,11 @@ class DetailUserActivity : AppCompatActivity() {
          *  Hint: Silakan periksa Assistant Firebase Cloud Firestore Point 4.
          **/
         // Tulis kode disini
-
+        val userHasMap = hashMapOf(
+            "name" to name,
+            "age" to age,
+            "gender" to gender
+        )
 
         /**
          * TODO 5: Kirim data user berupa HasMap yang sudah dibuat pada TODO 4
@@ -64,7 +72,12 @@ class DetailUserActivity : AppCompatActivity() {
          *  Gunakan fungsi finish() atau onBackPressed() untuk kembali ke halaman sebelumnya
          **/
         // Tulis kode disini
-
+        firestore.collection("users").add(userHasMap)
+            .addOnSuccessListener { finish() }
+            .addOnFailureListener { exception ->
+                Log.w("users", "Error adding documents.", exception)
+                Toast.makeText(this, "Error updating documents.", Toast.LENGTH_LONG).show()
+            }
 
     }
 
@@ -74,7 +87,11 @@ class DetailUserActivity : AppCompatActivity() {
          *  kemudian isi HasMap tersebut dengan data name, age dan gender.
          **/
         // Tulis kode disini
-
+        val userHasMap = hashMapOf<String, Any>(
+            "name" to name,
+            "age" to age,
+            "gender" to gender
+        )
 
         /**
          * TODO 7: Update data user berdasarkan document id.
@@ -84,7 +101,12 @@ class DetailUserActivity : AppCompatActivity() {
          *  Hint: Untuk update data gunakan .document(id).update(userHasMap)
          **/
         // Tulis kode disini
-
+        firestore.collection("users").document(id).update(userHasMap)
+            .addOnSuccessListener { finish() }
+            .addOnFailureListener { exception ->
+                Log.w("users", "Error updating documents.", exception)
+                Toast.makeText(this, "Error updating documents.", Toast.LENGTH_LONG).show()
+            }
 
     }
 
