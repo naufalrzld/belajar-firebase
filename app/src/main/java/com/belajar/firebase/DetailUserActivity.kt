@@ -11,6 +11,14 @@ class DetailUserActivity : AppCompatActivity() {
 
     private val userData by lazy { intent.getParcelableExtra<UserData>(USER_DATA) }
 
+    /**
+     * TODO 3: Buat variable global untuk menampung instance firestore
+     *
+     * Hint: Silakan periksa Assistant Firebase Cloud Firestore Point 3
+     **/
+    // Tulis kode disini
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
@@ -32,7 +40,9 @@ class DetailUserActivity : AppCompatActivity() {
             val age = binding.etAge.text.toString().toInt()
             val gender = binding.etGender.text.toString()
 
-            userData?.let { updateUser(it.id, name, age, gender) } ?: addNewUser(name, age, gender)
+            userData?.let { user ->
+                updateUser(user.id, name, age, gender)
+            } ?: addNewUser(name, age, gender)
         }
     }
 
@@ -59,6 +69,22 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun updateUser(id: String, name: String, age: Int, gender: String) {
+        /**
+         * TODO 6: Buat variable HasMap,
+         *  kemudian isi HasMap tersebut dengan data name, age dan gender.
+         **/
+        // Tulis kode disini
+
+
+        /**
+         * TODO 7: Update data user berdasarkan document id.
+         *  id didapatkan dari parameter id.
+         *  Jika add berhasil, kembali ke halaman sebelumnya.
+         *
+         *  Hint: Untuk update data gunakan .document(id).update(userHasMap)
+         **/
+        // Tulis kode disini
+
 
     }
 

@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = userAdapter
         }
+
+        binding.btnAdd.setOnClickListener {
+            startActivity(Intent(this, DetailUserActivity::class.java))
+        }
     }
 
     private fun getUsers() {
@@ -56,15 +60,11 @@ class MainActivity : AppCompatActivity() {
          *  Jika proses pengambilan data collection users berhasil,
          *  buat object UserData dengan paramter id, name, age dan gender
          *  berasal dari document collection, kemudian tambahkan ke dalam array users.
+         *  Kemudian Kirim array users ke UserAdapter
+         *  dengan memanfaatkan kode adapter.setUsers(users)
+         *  agar data users tampil di layar.
          *
          * Hint: Silakan periksa Assistant Firebase Cloud Firestore Point 5
-         **/
-        // Tulis kode disini
-
-
-        /**
-         * TODO 3: Kirim array users ke UserAdapter dengan memanfaatkan kode adapter.setUsers(users)
-         *  agar data users tampil di layar.
          **/
         // Tulis kode disini
 
@@ -72,7 +72,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun deleteUser(id: String) {
-
+        /**
+         * TODO 8: Lakukan delete user bedasarkan document id.
+         *  id didapatkan dari paramter id.
+         *  Jika proses delete berhasil, hapus juga item tersebut dari RecyclerView.
+         *
+         *  Hint: Untuk delete data gunakan .document(id).delete().
+         *  Untuk menghapus item dari RecyclerView, gunakan fungsi adapter.deleteUser(id)
+         **/
     }
 
     override fun onResume() {

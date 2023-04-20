@@ -54,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Age"
+        android:hint="Gender"
         app:layout_constraintEnd_toEndOf="@+id/til_name"
         app:layout_constraintStart_toStartOf="@+id/til_name"
         app:layout_constraintTop_toBottomOf="@+id/til_age">
@@ -63,7 +63,7 @@
             android:id="@+id/et_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="textCapWords"
             android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
